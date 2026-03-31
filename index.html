@@ -3,49 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harrow Defense — Advanced Tactical Electronics</title>
-<meta name="description" content="Harrow Defense develops advanced body-worn tactical electronics for the dismounted warfighter. Alexandria, Virginia.">
-<meta name="keywords" content="Harrow Defense, tactical electronics, defense technology, soldier systems">
+<title>Harrow Defense — Body-Worn Tactical Electronics</title>
+<meta name="description" content="Harrow Defense develops advanced body-worn electronics for defense, law enforcement, and emergency response. Low-SWaP systems for the tactical edge. Alexandria, Virginia.">
+<meta name="keywords" content="Harrow Defense, tactical electronics, defense technology, soldier systems, law enforcement technology, first responder electronics, body-worn sensors, mesh networking">
+
+<!-- Open Graph -->
 <meta property="og:title" content="Harrow Defense">
-<meta property="og:description" content="Advanced tactical electronics for the dismounted warfighter.">
+<meta property="og:description" content="Body-worn tactical electronics for defense, law enforcement, and emergency response.">
+<meta property="og:image" content="assets/logo-shield.png">
 <meta property="og:type" content="website">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/logo-shield.png">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   :root {
     --red: #C41E3A;
+    --red-dim: #8a1528;
+    --red-glow: rgba(196, 30, 58, 0.12);
     --blue: #2563eb;
+    --blue-dim: rgba(37, 99, 235, 0.08);
     --bg-deep: #060a12;
+    --bg-surface: #0a0f1a;
+    --bg-card: #0d1322;
     --text-primary: #d8dee8;
-    --text-muted: #7b8da8;
+    --text-secondary: #a0aec0;
+    --text-muted: #6b7a94;
     --text-dim: #3a4860;
     --border: #1a2438;
-    --border-blue: #152040;
+    --border-subtle: #131d2e;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     background: var(--bg-deep);
     color: var(--text-primary);
     font-family: 'Outfit', sans-serif;
     font-weight: 300;
-    line-height: 1.75;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
+  /* ========== CANVAS BACKGROUND ========== */
   #mesh-bg {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
   }
 
+  /* ========== HERO ========== */
   .hero {
     position: relative;
     z-index: 1;
@@ -58,7 +83,7 @@
   }
 
   .hero-logo {
-    max-width: 580px;
+    max-width: 540px;
     width: 90%;
     opacity: 0;
     animation: fadeUp 1.2s ease-out 0.3s forwards;
@@ -67,8 +92,8 @@
   .hero-rule {
     width: 80px;
     height: 1px;
-    background: linear-gradient(90deg, var(--red), var(--blue));
-    margin: 44px 0 32px;
+    background: var(--red);
+    margin: 40px 0 28px;
     opacity: 0;
     animation: fadeUp 0.8s ease-out 0.8s forwards;
   }
@@ -76,8 +101,8 @@
   .hero-tagline {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 500;
-    font-size: clamp(16px, 2.5vw, 20px);
-    letter-spacing: 5px;
+    font-size: clamp(13px, 2vw, 17px);
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--text-muted);
     text-align: center;
@@ -95,23 +120,28 @@
   }
 
   .scroll-cue svg {
-    width: 20px; height: 20px;
+    width: 20px;
+    height: 20px;
     stroke: var(--text-dim);
     animation: pulse-down 2s ease-in-out infinite;
   }
 
-  section {
+  /* ========== SECTIONS ========== */
+  .content-wrap {
     position: relative;
     z-index: 1;
-    max-width: 760px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 100px 24px;
+  }
+
+  section {
+    padding: 96px 32px;
   }
 
   .section-label {
     font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
+    font-weight: 600;
+    font-size: 11px;
     letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--red);
@@ -125,94 +155,223 @@
     position: absolute;
     left: 0;
     top: 50%;
-    width: 8px;
-    height: 8px;
-    border: 1.5px solid var(--blue);
+    width: 6px;
+    height: 6px;
+    border: 1.5px solid var(--red-dim);
     border-radius: 1px;
     transform: translateY(-50%) rotate(45deg);
   }
 
   .section-text {
-    font-size: 19px;
+    font-size: 17px;
     color: var(--text-primary);
     line-height: 1.85;
-    max-width: 640px;
+    max-width: 620px;
   }
 
-  .section-text + .section-text { margin-top: 22px; }
+  .section-text + .section-text {
+    margin-top: 20px;
+  }
 
-  .divider { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .section-text .muted {
+    color: var(--text-secondary);
+  }
+
+  /* ========== APPLICATIONS GRID ========== */
+  .applications-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 36px;
+  }
+
+  .app-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 28px 24px;
+    transition: border-color 0.3s ease;
+  }
+
+  .app-card:hover {
+    border-color: var(--border);
+  }
+
+  .app-card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .app-card-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ========== TECHNOLOGY PILLARS ========== */
+  .tech-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 36px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .tech-pillar {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .tech-pillar-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+
+  .tech-pillar-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ========== DIVIDERS ========== */
+  .divider {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
 
   .divider-line {
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-blue) 30%, var(--border) 70%, transparent);
+    background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
   }
 
+  /* ========== CONTACT ========== */
   .contact-email {
     display: inline-block;
-    margin-top: 24px;
+    margin-top: 20px;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 1px;
     color: var(--red);
     text-decoration: none;
-    padding-bottom: 2px;
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s ease;
   }
 
-  .contact-email:hover { border-bottom-color: var(--red); }
+  .contact-email:hover {
+    border-bottom-color: var(--red);
+  }
 
+  /* ========== FOOTER ========== */
   footer {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 60px 24px 40px;
-    border-top: 1px solid var(--border);
-    max-width: 760px;
+    padding: 60px 32px 40px;
+    border-top: 1px solid var(--border-subtle);
+    max-width: 800px;
     margin: 0 auto;
   }
 
   .footer-shield {
-    width: 40px;
+    width: 36px;
     height: auto;
     opacity: 0.2;
     margin-bottom: 20px;
   }
 
-  .footer-text { font-size: 13px; color: var(--text-dim); letter-spacing: 1px; }
-  .footer-text + .footer-text { margin-top: 4px; }
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
 
+  .footer-text + .footer-text {
+    margin-top: 4px;
+  }
+
+  /* ========== ANIMATIONS ========== */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   @keyframes pulse-down {
     0%, 100% { transform: translateY(0); opacity: 0.4; }
     50% { transform: translateY(6px); opacity: 0.8; }
   }
 
   .reveal {
-    opacity: 0; transform: translateY(24px);
+    opacity: 0;
+    transform: translateY(24px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 600px) {
-    .hero-logo { max-width: 340px; }
-    section { padding: 72px 20px; }
-    .section-text { font-size: 17px; }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    .hero-logo {
+      max-width: 320px;
+    }
+
+    section {
+      padding: 72px 20px;
+    }
+
+    .section-text {
+      font-size: 15px;
+    }
+
+    .applications-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tech-pillar {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tech-pillar-label {
+      min-width: unset;
+    }
   }
 </style>
 </head>
 <body>
+
+<!-- Mesh constellation background -->
 <canvas id="mesh-bg"></canvas>
+
+<!-- ===== HERO ===== -->
 <div class="hero">
-  <img src="logo-horizontal.jpg">
+  <img src="assets/logo-horizontal.png" alt="Harrow Defense" class="hero-logo">
   <div class="hero-rule"></div>
-  <p class="hero-tagline">Advanced Tactical Electronics</p>
+  <p class="hero-tagline">Body-Worn Tactical Electronics</p>
+
   <div class="scroll-cue" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
       <polyline points="6 9 12 15 18 9"/>
@@ -220,18 +379,82 @@
   </div>
 </div>
 
+<div class="content-wrap">
+
+<!-- ===== MISSION ===== -->
 <div class="divider"><div class="divider-line"></div></div>
+
 <section class="reveal">
   <div class="section-label">Mission</div>
   <p class="section-text">
-    Harrow Defense builds body-worn electronics that close critical capability gaps for dismounted soldiers. We develop low-SWaP systems engineered for the tactical edge — where size, weight, power, and survivability are non-negotiable.
+    Harrow Defense builds body-worn electronic systems that close critical capability gaps for operators in contested and high-risk environments. We develop low-SWaP hardware engineered for the tactical edge — where size, weight, power, and survivability are non-negotiable.
   </p>
   <p class="section-text">
-    Our work sits at the intersection of embedded systems, mesh networking, and edge computing — purpose-built for the warfighter.
+    Our systems are designed for the people who operate beyond reliable infrastructure: dismounted warfighters, law enforcement tactical teams, and emergency first responders.
   </p>
 </section>
 
+<!-- ===== APPLICATIONS ===== -->
 <div class="divider"><div class="divider-line"></div></div>
+
+<section class="reveal">
+  <div class="section-label">Applications</div>
+  <p class="section-text">
+    We focus on problem sets where current solutions are too large, too fragile, or too dependent on infrastructure that doesn't exist at the point of need.
+  </p>
+
+  <div class="applications-grid">
+    <div class="app-card">
+      <div class="app-card-title">Personnel Tracking</div>
+      <p class="app-card-text">Real-time location and status of distributed team members in GPS-denied and communications-degraded environments.</p>
+    </div>
+    <div class="app-card">
+      <div class="app-card-title">Tactical Communications</div>
+      <p class="app-card-text">Low-power mesh networking for dismounted teams operating beyond the reach of existing communications infrastructure.</p>
+    </div>
+    <div class="app-card">
+      <div class="app-card-title">Physiological Monitoring</div>
+      <p class="app-card-text">Body-worn sensing for operator health and readiness — from heat casualty prevention to real-time triage support.</p>
+    </div>
+    <div class="app-card">
+      <div class="app-card-title">Edge Processing</div>
+      <p class="app-card-text">On-body compute for time-critical data fusion and decision support where cloud connectivity is unavailable or unacceptable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECHNOLOGY ===== -->
+<div class="divider"><div class="divider-line"></div></div>
+
+<section class="reveal">
+  <div class="section-label">Technology</div>
+  <p class="section-text">
+    We design hardware and firmware from the ground up for the constraints of body-worn tactical use. Our work spans the full stack from antenna and RF through embedded software — optimized for environments where every gram, milliwatt, and millisecond matters.
+  </p>
+
+  <div class="tech-pillars">
+    <div class="tech-pillar">
+      <span class="tech-pillar-label">Embedded Systems</span>
+      <span class="tech-pillar-desc">Custom hardware and firmware designed for extreme SWaP constraints and sustained field operation.</span>
+    </div>
+    <div class="tech-pillar">
+      <span class="tech-pillar-label">Mesh Networking</span>
+      <span class="tech-pillar-desc">Self-forming, self-healing radio networks that operate without fixed infrastructure.</span>
+    </div>
+    <div class="tech-pillar">
+      <span class="tech-pillar-label">Edge Compute</span>
+      <span class="tech-pillar-desc">On-device processing and sensor fusion for real-time decision support at the point of need.</span>
+    </div>
+    <div class="tech-pillar">
+      <span class="tech-pillar-label">Ruggedized Design</span>
+      <span class="tech-pillar-desc">Systems built for shock, moisture, temperature extremes, and the realities of sustained operational wear.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<div class="divider"><div class="divider-line"></div></div>
+
 <section class="reveal">
   <div class="section-label">Contact</div>
   <p class="section-text">
@@ -240,21 +463,24 @@
   <a href="mailto:dan@harrowdefense.com" class="contact-email">dan@harrowdefense.com</a>
 </section>
 
+</div><!-- .content-wrap -->
+
+<!-- ===== FOOTER ===== -->
 <footer class="reveal">
-  <img src="logo-shield.jpg">
+  <img src="assets/logo-shield.png" alt="" class="footer-shield">
   <p class="footer-text">Harrow Defense, LLC &middot; Alexandria, Virginia</p>
   <p class="footer-text">&copy; 2026 Harrow Defense, LLC. All rights reserved.</p>
 </footer>
 
 <script>
+// ========== CONSTELLATION MESH BACKGROUND ==========
 (function() {
   const canvas = document.getElementById('mesh-bg');
   const ctx = canvas.getContext('2d');
   let w, h, nodes = [];
-  const NODE_COUNT = 50;
-  const CONNECT_DIST = 170;
+  const NODE_COUNT = 45;
+  const CONNECT_DIST = 180;
   const RED = [196, 30, 58];
-  const BLUE = [37, 99, 235];
 
   function resize() {
     w = canvas.width = window.innerWidth;
@@ -264,25 +490,26 @@
   function initNodes() {
     nodes = [];
     for (let i = 0; i < NODE_COUNT; i++) {
-      const isBlue = Math.random() < 0.35;
       nodes.push({
         x: Math.random() * w,
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.25,
         vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() * 1.5 + 0.5,
-        color: isBlue ? BLUE : RED
+        r: Math.random() * 1.5 + 0.5
       });
     }
   }
 
   function draw() {
     ctx.clearRect(0, 0, w, h);
+
     for (const n of nodes) {
-      n.x += n.vx; n.y += n.vy;
+      n.x += n.vx;
+      n.y += n.vy;
       if (n.x < 0 || n.x > w) n.vx *= -1;
       if (n.y < 0 || n.y > h) n.vy *= -1;
     }
+
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
@@ -290,8 +517,7 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < CONNECT_DIST) {
           const alpha = (1 - dist / CONNECT_DIST) * 0.07;
-          const c = nodes[i].color === BLUE || nodes[j].color === BLUE ? BLUE : RED;
-          ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
+          ctx.strokeStyle = `rgba(${RED[0]},${RED[1]},${RED[2]},${alpha})`;
           ctx.lineWidth = 0.5;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -300,28 +526,41 @@
         }
       }
     }
+
     for (const n of nodes) {
-      ctx.fillStyle = `rgba(${n.color[0]},${n.color[1]},${n.color[2]},0.2)`;
+      ctx.fillStyle = `rgba(${RED[0]},${RED[1]},${RED[2]},0.2)`;
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
       ctx.fill();
     }
+
     requestAnimationFrame(draw);
   }
 
-  window.addEventListener('resize', () => { resize(); initNodes(); });
-  resize(); initNodes(); draw();
+  window.addEventListener('resize', () => {
+    resize();
+    initNodes();
+  });
+
+  resize();
+  initNodes();
+  draw();
 })();
 
+// ========== SCROLL REVEAL ==========
 (function() {
   const els = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
+
   els.forEach(el => observer.observe(el));
 })();
 </script>
+
 </body>
 </html>
