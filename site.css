@@ -122,9 +122,9 @@ h3 { font-size: 20px; letter-spacing: 1px; }
 /* ========== PROOF STRIP ========== */
 .proof { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); background: rgba(10, 15, 26, 0.6); }
 .proof-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
-.proof-item { padding: 30px 22px; border-left: 1px solid var(--border-subtle); }
+.proof-item { padding: 30px 22px; border-left: 1px solid var(--border-subtle); min-width: 0; }
 .proof-item:first-child { border-left: none; }
-.proof-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 38px; line-height: 1; color: var(--text-primary); letter-spacing: 1px; }
+.proof-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 38px; line-height: 1; color: var(--text-primary); letter-spacing: 1px; overflow-wrap: anywhere; }
 .proof-num .unit { font-size: 20px; color: var(--red-bright); margin-left: 4px; }
 .proof-cap { margin-top: 10px; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
