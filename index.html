@@ -3,601 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harrow Defense — Body-Worn Electronics for Defense, Public Safety, and Industrial Operations</title>
-<meta name="description" content="Harrow Defense develops body-worn electronics for operators in contested, remote, and infrastructure-degraded environments — military, law enforcement, search and rescue, wildland fire, mining and industrial safety. Low-SWaP systems for the operational edge. Alexandria, Virginia.">
-<meta name="keywords" content="Harrow Defense, body-worn electronics, personnel tracking, mesh networking, soldier systems, law enforcement technology, SWAT, search and rescue, wildland firefighting, mining safety, lone worker safety, mass casualty, HAZMAT, physiological monitoring, edge processing, low-SWaP">
+<title>Harrow Defense | PYLON: Soldier-Worn Sensor Networking</title>
+<meta name="description" content="Harrow Defense builds PYLON, a body-worn node that puts the sensors already on a soldier onto the tactical network: an individual position for every dismounted soldier, an infrastructure-free mesh, and native Cursor-on-Target output into ATAK. Designed for defense, public safety, and industrial operators who work beyond reliable infrastructure. Alexandria, Virginia.">
+<meta name="keywords" content="Harrow Defense, PYLON, soldier-worn sensor networking, wearable sensor gateway, body-worn electronics, dismounted soldier PLI, LoRa mesh, Cursor-on-Target, ATAK, TAK, intra-soldier wireless, EMCON, LPI LPD, first responder tracking, wildland fire, search and rescue, mining safety, SDVOSB">
+<link rel="canonical" href="https://harrowdefense.com/">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Harrow Defense">
-<meta property="og:description" content="Body-worn electronics for defense, public safety, and industrial operations. Personnel tracking, mesh communications, and physiological monitoring beyond reliable infrastructure.">
-<meta property="og:image" content="logo-shield.jpg">
+<!-- Open Graph / Twitter -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Harrow Defense">
+<meta property="og:title" content="Harrow Defense | PYLON: Soldier-Worn Sensor Networking">
+<meta property="og:description" content="PYLON takes the sensors already on a soldier and puts their data onto the tactical network. Individual position for every dismounted soldier, infrastructure-free mesh, ATAK-native output.">
+<meta property="og:url" content="https://harrowdefense.com/">
+<meta property="og:image" content="https://harrowdefense.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harrow Defense | PYLON">
+<meta name="twitter:description" content="Soldier-worn sensor networking. Every soldier. Every sensor. Connected.">
+<meta name="twitter:image" content="https://harrowdefense.com/og-image.png">
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="logo-shield.jpg">
+<!-- Icons -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#060a12">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 
-<style>
-  *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Harrow Defense",
+  "legalName": "Harrow Defense, LLC",
+  "url": "https://harrowdefense.com/",
+  "logo": "https://harrowdefense.com/logo-stacked.png",
+  "foundingDate": "2026",
+  "email": "dan@harrowdefense.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Alexandria", "addressRegion": "VA", "addressCountry": "US" },
+  "founder": { "@type": "Person", "name": "Daniel Kurtenbach", "honorificPrefix": "Dr.", "jobTitle": "Founder and Chief Executive Officer", "url": "https://harrowdefense.com/company.html#founder" },
+  "description": "Harrow Defense builds PYLON, a body-worn node that aggregates soldier-worn sensor data and bridges it to the tactical network over an infrastructure-free mesh with native Cursor-on-Target output.",
+  "makesOffer": { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "PYLON", "url": "https://harrowdefense.com/pylon.html" } }
+}
+</script>
 
-  :root {
-    --red: #C41E3A;
-    --red-dim: #8a1528;
-    --red-glow: rgba(196, 30, 58, 0.12);
-    --blue: #2563eb;
-    --blue-dim: rgba(37, 99, 235, 0.08);
-    --bg-deep: #060a12;
-    --bg-surface: #0a0f1a;
-    --bg-card: #0d1322;
-    --text-primary: #d8dee8;
-    --text-secondary: #a0aec0;
-    --text-muted: #6b7a94;
-    --text-dim: #3a4860;
-    --border: #1a2438;
-    --border-subtle: #131d2e;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background: var(--bg-deep);
-    color: var(--text-primary);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* ========== CANVAS BACKGROUND ========== */
-  #mesh-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  /* ========== HERO ========== */
-  .hero {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 24px;
-  }
-
-  .hero-logo {
-    max-width: 540px;
-    width: 90%;
-    opacity: 0;
-    animation: fadeUp 1.2s ease-out 0.3s forwards;
-  }
-
-  .hero-rule {
-    width: 80px;
-    height: 1px;
-    background: var(--red);
-    margin: 40px 0 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.8s forwards;
-  }
-
-  .hero-tagline {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 500;
-    font-size: clamp(13px, 2vw, 17px);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-align: center;
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 1.1s forwards;
-  }
-
-  .scroll-cue {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    animation: fadeIn 1s ease-out 2s forwards;
-  }
-
-  .scroll-cue svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--text-dim);
-    animation: pulse-down 2s ease-in-out infinite;
-  }
-
-  /* ========== SECTIONS ========== */
-  .content-wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  section {
-    padding: 96px 32px;
-  }
-
-  .section-label {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 28px;
-    position: relative;
-    padding-left: 20px;
-  }
-
-  .section-label::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 6px;
-    height: 6px;
-    border: 1.5px solid var(--red-dim);
-    border-radius: 1px;
-    transform: translateY(-50%) rotate(45deg);
-  }
-
-  .section-text {
-    font-size: 17px;
-    color: var(--text-primary);
-    line-height: 1.85;
-    max-width: 620px;
-  }
-
-  .section-text + .section-text {
-    margin-top: 20px;
-  }
-
-  .section-text .muted {
-    color: var(--text-secondary);
-  }
-
-  /* ========== APPLICATIONS GRID ========== */
-  .applications-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 36px;
-  }
-
-  .app-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    padding: 28px 24px;
-    transition: border-color 0.3s ease;
-  }
-
-  .app-card:hover {
-    border-color: var(--border);
-  }
-
-  .app-card-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-  }
-
-  .app-card-text {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* ========== TECHNOLOGY PILLARS ========== */
-  .tech-pillars {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 36px;
-    border-top: 1px solid var(--border-subtle);
-  }
-
-  .tech-pillar {
-    display: flex;
-    align-items: baseline;
-    gap: 24px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .tech-pillar-label {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    min-width: 160px;
-    flex-shrink: 0;
-  }
-
-  .tech-pillar-desc {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* ========== DIVIDERS ========== */
-  .divider {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .divider-line {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
-  }
-
-  /* ========== CONTACT ========== */
-  .contact-email {
-    display: inline-block;
-    margin-top: 20px;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: var(--red);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease;
-  }
-
-  .contact-email:hover {
-    border-bottom-color: var(--red);
-  }
-
-  /* ========== FOOTER ========== */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 60px 32px 40px;
-    border-top: 1px solid var(--border-subtle);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .footer-shield {
-    width: 36px;
-    height: auto;
-    opacity: 0.2;
-    margin-bottom: 20px;
-  }
-
-  .footer-text {
-    font-size: 12px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-  }
-
-  .footer-text + .footer-text {
-    margin-top: 4px;
-  }
-
-  /* ========== ANIMATIONS ========== */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes pulse-down {
-    0%, 100% { transform: translateY(0); opacity: 0.4; }
-    50% { transform: translateY(6px); opacity: 0.8; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 640px) {
-    .hero-logo {
-      max-width: 320px;
-    }
-
-    section {
-      padding: 72px 20px;
-    }
-
-    .section-text {
-      font-size: 15px;
-    }
-
-    .applications-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .tech-pillar {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .tech-pillar-label {
-      min-width: unset;
-    }
-  }
-</style>
+<!-- Analytics: paste the Cloudflare Web Analytics or Plausible snippet here once the account exists. -->
+<!-- Search Console: paste the google-site-verification meta tag here if verifying by HTML tag. -->
 </head>
 <body>
 
-<!-- Mesh constellation background -->
-<canvas id="mesh-bg"></canvas>
+<canvas id="mesh-bg" data-intensity="1"></canvas>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html" aria-label="Harrow Defense home"><img src="logo-horizontal-600.png" alt="Harrow Defense"></a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="pylon.html">PYLON</a></li>
+        <li><a href="company.html">Company</a></li>
+        <li><a href="#investors" class="nav-cta">Investors</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 <!-- ===== HERO ===== -->
-<div class="hero">
-  <img src="logo-horizontal.jpg" alt="Harrow Defense" class="hero-logo">
-  <div class="hero-rule"></div>
-  <p class="hero-tagline">Body-Worn Electronics for the Operational Edge</p>
-
-  <div class="scroll-cue" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-      <polyline points="6 9 12 15 18 9"/>
-    </svg>
+<div class="hero hero-home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Harrow Defense <span class="pip">&#9670;</span> Alexandria, Virginia</div>
+      <h1>Every soldier.<br>Every sensor.<br><span class="accent">Connected.</span></h1>
+      <p class="lead">PYLON takes the sensors already on a soldier and puts their data onto the tactical network. A body-worn node designed to under 100 grams and under a watt: an individual position for every dismounted soldier, an infrastructure-free mesh, and native Cursor-on-Target output into ATAK. The radio is someone else's job.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="pylon.html">See PYLON <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#investors">Investor inquiries</a>
+      </div>
+      <div class="hero-status">Rev A prototypes in bring-up <span class="pip">&#9670;</span> Patent pending <span class="pip">&#9670;</span> SDVOSB</div>
+    </div>
+    <div class="hero-visual">
+      <img src="logo-stacked.png" alt="Harrow Defense" class="hero-logo" width="1000" height="1134">
+    </div>
   </div>
 </div>
 
-<div class="content-wrap">
-
-<!-- ===== MISSION ===== -->
-<div class="divider"><div class="divider-line"></div></div>
-
-<section class="reveal">
-  <div class="section-label">Mission</div>
-  <p class="section-text">
-    Harrow Defense builds body-worn electronic systems that close critical capability gaps for operators in contested, remote, and infrastructure-degraded environments. We develop low-SWaP hardware engineered for the operational edge — where size, weight, power, and survivability are non-negotiable, and where the cell tower, the satellite link, and the GPS fix cannot be assumed.
-  </p>
-  <p class="section-text">
-    Our systems are designed for the people who operate beyond reliable infrastructure: dismounted military forces, law enforcement and tactical teams, wildland firefighters and search-and-rescue crews, mass-casualty and HAZMAT responders, and industrial workers in remote, underground, or RF-denied environments.
-  </p>
-</section>
-
-<!-- ===== CAPABILITIES (FORMERLY APPLICATIONS) ===== -->
-<div class="divider"><div class="divider-line"></div></div>
-
-<section class="reveal">
-  <div class="section-label">Capabilities</div>
-  <p class="section-text">
-    We focus on problem sets where current solutions are too large, too fragile, or too dependent on infrastructure that doesn't exist at the point of need. Each capability is designed to be useful whether the operator is a soldier, a SWAT team member, a hotshot crew boss, or an underground mine supervisor.
-  </p>
-
-  <div class="applications-grid">
-    <div class="app-card">
-      <div class="app-card-title">Personnel Tracking</div>
-      <p class="app-card-text">Real-time location and status of distributed team members in GPS-denied, comms-degraded, and indoor or underground environments — from dismounted squads to SWAT entries, fire-ground interiors, and mine workings.</p>
+<!-- ===== PROOF STRIP ===== -->
+<div class="proof reveal">
+  <div class="wrap">
+    <div class="proof-grid">
+      <div class="proof-item"><div class="proof-num">12</div><div class="proof-cap">Assembled Rev A prototypes delivered August 2026, bring-up underway</div></div>
+      <div class="proof-item"><div class="proof-num">4</div><div class="proof-cap">U.S. provisional patent applications filed April 2026</div></div>
+      <div class="proof-item"><div class="proof-num">TRL<span class="unit">4</span></div><div class="proof-cap">Mesh, positioning, and TAK output demonstrated end to end on development hardware</div></div>
+      <div class="proof-item"><div class="proof-num">SDVOSB</div><div class="proof-cap">SBA-certified service-disabled veteran-owned small business, CAGE 1AQ41</div></div>
+      <div class="proof-item"><div class="proof-num">100<span class="unit">%</span></div><div class="proof-cap">Founder-funded to date. No outside capital, clean cap table, founder-owned IP</div></div>
     </div>
-    <div class="app-card">
-      <div class="app-card-title">Mesh Communications</div>
-      <p class="app-card-text">Self-forming, self-healing low-power radio networks that operate without fixed infrastructure. Carries position and sensor data where cellular, LMR, and satellite are degraded, contested, or absent.</p>
-    </div>
-    <div class="app-card">
-      <div class="app-card-title">Physiological Monitoring</div>
-      <p class="app-card-text">Body-worn sensing for individual health and readiness — heat-casualty prevention, real-time triage support, and lone-worker fall and exposure detection across military, public safety, and industrial users.</p>
-    </div>
-    <div class="app-card">
-      <div class="app-card-title">Edge Processing</div>
-      <p class="app-card-text">On-body compute for time-critical data fusion and decision support where cloud connectivity is unavailable, unacceptable, or unaffordable.</p>
+  </div>
+</div>
+
+<!-- ===== PROBLEM ===== -->
+<section class="reveal" id="problem">
+  <div class="wrap">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Every soldier carries sensors. No fielded device bridges them to the network.</h2>
+    <p class="body">Physiological monitors, weapon-status and ammunition counters, counter-UAS alerts, and CBRN detectors all speak Bluetooth. The tactical network speaks something else, and the two only meet at the leader carrying an end-user device. For everyone else, the data stays on the body and the commander stays blind.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">Stranded sensor data</div>
+        <p class="card-text">Body-worn Bluetooth sensor output is trapped at the soldier with no secure path to the tactical network or to the cloud behind it.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">Invisible soldiers</div>
+        <p class="card-text">Position reporting stops at the leader carrying an end-user device, roughly 90,000 systems. The remaining roughly 300,000 dismounted soldiers have no affordable path to an individual position on the network.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">Bandwidth bottleneck</div>
+        <p class="card-text">Raw sensor streams would overwhelm tactical links. Nothing at the edge compresses, prioritizes, and formats data before it reaches the network.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== OPERATING ENVIRONMENTS (NEW SECTION) ===== -->
 <div class="divider"><div class="divider-line"></div></div>
 
-<section class="reveal">
-  <div class="section-label">Operating Environments</div>
-  <p class="section-text">
-    The same core technology — small, rugged, low-power body-worn electronics that work without infrastructure — serves a wide range of operators who share a common problem: they need to know where their people are, what condition they're in, and how to keep them connected when conventional networks fail.
-  </p>
-
-  <div class="applications-grid">
-    <div class="app-card">
-      <div class="app-card-title">Defense</div>
-      <p class="app-card-text">Dismounted-soldier capability gaps in position location, sensor aggregation, and tactical-network bridging. Designed for contested electromagnetic environments and extended dismounted operations.</p>
+<!-- ===== WHAT PYLON DOES ===== -->
+<section class="reveal" id="pylon">
+  <div class="wrap">
+    <div class="section-label">What PYLON Does</div>
+    <h2 class="section-title">The aggregation tier beneath the radio, the end-user device, and the display.</h2>
+    <p class="body">PYLON does not try to be the soldier's computer, radio, or display. It is the layer underneath them, which keeps it small, keeps it cheap, and makes it complementary to the systems the Army is already buying rather than competitive with them. Four steps, each deliberately boring so the whole chain is reliable.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Collect</div>
+        <p class="step-text">PYLON pairs with the sensors already on the soldier over Bluetooth Low Energy and pulls their output continuously.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Relay</div>
+        <p class="step-text">It moves that data soldier to soldier over a LoRa mesh in the 902-928 MHz band. Low data rate, long range, very low power, and hard to detect. No infrastructure and no vehicle required.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Translate</div>
+        <p class="step-text">Onboard compute converts proprietary sensor output into Cursor-on-Target, the native wire format of the TAK ecosystem, so the data lands in ATAK without a gateway server or a custom integration.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Control emissions</div>
+        <p class="step-text">Four modes, enforced in hardware rather than software, including a kill switch that physically opens the radio path for a true zero-RF state.</p>
+      </div>
     </div>
-    <div class="app-card">
-      <div class="app-card-title">Law Enforcement</div>
-      <p class="app-card-text">Tactical teams operating in stairwells, tunnels, transit systems, and RF-degraded urban interiors where commercial radios and cellular service break down.</p>
+    <div class="pull">
+      <p>Most tactical networking treats radio silence as a software setting. On PYLON the full mode is a physical disconnection, so the soldier controls his own signature rather than trusting a configuration file. In an environment where the emitter you carry is what gets you found, that distinction is the product.</p>
     </div>
-    <div class="app-card">
-      <div class="app-card-title">Wildland Fire & SAR</div>
-      <p class="app-card-text">Hand-crew, hotshot, and search-and-rescue operations across remote terrain — beyond LMR repeater coverage and cellular footprint, where crew location and physiological state matter.</p>
-    </div>
-    <div class="app-card">
-      <div class="app-card-title">Mass Casualty & HAZMAT</div>
-      <p class="app-card-text">Multi-agency personnel tracking and physiological monitoring during MCI scenes, structure fires, and HAZMAT incidents where multiple radio systems and accountability frameworks intersect.</p>
-    </div>
-    <div class="app-card">
-      <div class="app-card-title">Mining & Industrial Safety</div>
-      <p class="app-card-text">Underground personnel tracking, gas-sensor aggregation, and mesh relay in RF-denied environments. Lone-worker safety on pipelines, transmission corridors, and remote sites.</p>
-    </div>
-    <div class="app-card">
-      <div class="app-card-title">Remote & Expedition Operations</div>
-      <p class="app-card-text">Research teams, expedition crews, and professional outdoor operators working far from cellular and reliable satellite coverage.</p>
+    <div class="btn-row">
+      <a class="btn btn-ghost" href="pylon.html">Product detail and specifications <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ===== TECHNOLOGY ===== -->
 <div class="divider"><div class="divider-line"></div></div>
 
-<section class="reveal">
-  <div class="section-label">Technology</div>
-  <p class="section-text">
-    We design hardware and firmware from the ground up for the constraints of sustained body-worn operation. Our work spans the full stack from antenna and RF through embedded software — optimized for environments where every gram, milliwatt, and millisecond matters, and where the device has to keep working when the rest of the network stops.
-  </p>
-
-  <div class="tech-pillars">
-    <div class="tech-pillar">
-      <span class="tech-pillar-label">Embedded Systems</span>
-      <span class="tech-pillar-desc">Custom hardware and firmware designed for extreme SWaP constraints and sustained field operation.</span>
+<!-- ===== WHY NOW ===== -->
+<section class="reveal" id="why-now">
+  <div class="wrap">
+    <div class="section-label">Why Now</div>
+    <h2 class="section-title">The requirement is written down, the network is being installed, and the primes are locking their hardware.</h2>
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-kicker">Requirement</div>
+        <div class="card-title">August 2026</div>
+        <p class="card-text">Project Polaris 2026, the Army's public ground maneuver modernization plan, calls for soldier wearables and intra-soldier wireless that give dismounted leaders a persistent digital link to voice, position, and fires without relying on a vehicle. Near term is FY26 to FY30.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Network</div>
+        <div class="card-title">Ready to scale</div>
+        <p class="card-text">The Army declared Next Generation Command and Control ready to scale after Project Convergence Capstone 6, with I Corps first to field. The transport PYLON rides is being installed, not proposed.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Budget</div>
+        <div class="card-title">Roughly $475M</div>
+        <p class="card-text">Soldier Borne Mission Command awards across three prime contractors since September 2025. Phase two puts 170 prototypes into test in early 2027, with a production downselect as soon as FY2028.</p>
+      </div>
+      <div class="card">
+        <div class="card-kicker">Consolidation</div>
+        <div class="card-title">The field is thinning</div>
+        <p class="card-text">Three independent players in this lane have been acquired: Klas by Anduril, K&auml;gwerks by Codan, goTenna by Forterra. The acquirers are buying.</p>
+      </div>
     </div>
-    <div class="tech-pillar">
-      <span class="tech-pillar-label">Mesh Networking</span>
-      <span class="tech-pillar-desc">Self-forming, self-healing radio networks that operate without fixed infrastructure.</span>
-    </div>
-    <div class="tech-pillar">
-      <span class="tech-pillar-label">Edge Compute</span>
-      <span class="tech-pillar-desc">On-device processing and sensor fusion for real-time decision support at the point of need.</span>
-    </div>
-    <div class="tech-pillar">
-      <span class="tech-pillar-label">Ruggedized Design</span>
-      <span class="tech-pillar-desc">Systems built for shock, moisture, temperature extremes, and the realities of sustained operational wear.</span>
+    <div class="pull">
+      <p>No fielded device aggregates soldier-worn sensor data and bridges it to the tactical network at under 100 grams and under a watt. That slot closes when the Soldier Borne Mission Command primes lock their hardware.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
 <div class="divider"><div class="divider-line"></div></div>
 
-<section class="reveal">
-  <div class="section-label">Contact</div>
-  <p class="section-text">
-    For inquiries about capabilities, partnerships, pilot programs, and procurement across government and commercial markets.
-  </p>
-  <a href="mailto:dan@harrowdefense.com" class="contact-email">dan@harrowdefense.com</a>
+<!-- ===== DUAL USE ===== -->
+<section class="reveal" id="operators">
+  <div class="wrap">
+    <div class="section-label">One Architecture, Every Operator</div>
+    <h2 class="section-title">The dismounted soldier is the wedge. The market is everyone who works beyond infrastructure.</h2>
+    <p class="body">Every operator who works where the cell tower, the satellite link, and the GPS fix cannot be assumed has the same three questions: where are my people, what condition are they in, and how do I keep them connected when the network fails. The first-responder market has already standardized on exactly PYLON's architecture, a body-worn hub that aggregates sensors and pushes location, telemetry, and status to an incident command dashboard, with federal equipment funding flowing through the FEMA Assistance to Firefighters Grant program at roughly $324M appropriated in FY2024.</p>
+    <p class="body">None of the vendors serving that market publicly offers an infrastructure-independent operator-to-operator mesh, and none claims Cursor-on-Target output, even though DHS is a named TAK sponsor. PYLON was designed for both from the start. The same hardware, the same firmware, and the same open output format serve every environment below.</p>
+    <div class="grid-3">
+      <div class="card featured">
+        <div class="card-kicker">Primary market</div>
+        <div class="card-title">Defense</div>
+        <p class="card-text">Dismounted-soldier gaps in individual position, sensor aggregation, and tactical-network bridging. Designed for contested electromagnetic environments and extended dismounted operations.</p>
+        <span class="card-tag">Army &middot; Marine Corps &middot; Special Operations</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Law Enforcement</div>
+        <p class="card-text">Tactical teams operating in stairwells, tunnels, transit systems, and RF-degraded urban interiors where commercial radios and cellular service break down.</p>
+        <span class="card-tag">SWAT &middot; Transit &middot; Corrections</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Wildland Fire &amp; SAR</div>
+        <p class="card-text">Hand-crew, hotshot, and search-and-rescue operations across remote terrain, beyond repeater coverage and cellular footprint, where crew location and physiological state matter.</p>
+        <span class="card-tag">Hand crews &middot; Hotshots &middot; SAR teams</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Mass Casualty &amp; HAZMAT</div>
+        <p class="card-text">Multi-agency personnel accountability and physiological monitoring at mass-casualty scenes, structure fires, and HAZMAT incidents where several radio systems intersect.</p>
+        <span class="card-tag">Fire &middot; EMS &middot; Incident command</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Mining &amp; Industrial Safety</div>
+        <p class="card-text">Underground personnel tracking, gas-sensor aggregation, and mesh relay in RF-denied workings. Lone-worker safety on pipelines, transmission corridors, and remote sites.</p>
+        <span class="card-tag">Underground &middot; Pipelines &middot; Utilities</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Remote &amp; Expedition Operations</div>
+        <p class="card-text">Research teams, expedition crews, and professional outdoor operators working far from cellular and reliable satellite coverage.</p>
+        <span class="card-tag">Field science &middot; Guides &middot; Offshore</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-</div><!-- .content-wrap -->
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ===== PROGRESS ===== -->
+<section class="reveal" id="progress">
+  <div class="wrap">
+    <div class="section-label">Progress</div>
+    <h2 class="section-title">From concept to assembled prototype hardware in one year, on founder capital.</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Early 2026</div>
+        <div class="tl-title">Harrow Defense founded</div>
+        <p class="tl-text">Virginia company based in Alexandria, founded to build body-worn systems for people who work beyond reliable infrastructure.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">March 2026</div>
+        <div class="tl-title">Mesh and positioning demonstrated end to end</div>
+        <p class="tl-text">Four-node self-healing LoRa mesh carrying GNSS position into CivTAK as Cursor-on-Target, with per-operator icons on the tactical map, on development hardware.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">April 2026</div>
+        <div class="tl-title">Four U.S. provisional patent applications filed</div>
+        <p class="tl-text">Covering the emission-control architecture, the low-probability-of-intercept mesh waveform, the sensor gateway, and dead reckoning.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 2026</div>
+        <div class="tl-title">SDVOSB certified. Joint Certification Program certified.</div>
+        <p class="tl-text">SBA certification as a service-disabled veteran-owned small business, and DLA certification for access to export-controlled technical data.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">July 2026</div>
+        <div class="tl-title">Rev A circuit board released to a U.S. fabrication and assembly partner</div>
+        <p class="tl-text">Custom board with a 31-item all-COTS bill of materials, designed with a U.S. electrical-engineering partner.</p>
+      </div>
+      <div class="tl-item now">
+        <div class="tl-date">August 2026</div>
+        <div class="tl-title">Prototypes in hand. Capability brief to the Marine Corps Warfighting Laboratory.</div>
+        <p class="tl-text">Twelve assembled Rev A prototypes delivered. First board powered up; radios and sensors pass initial self-test. Bring-up continuing toward squad-scale validation.</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-ghost" href="company.html#milestones">Full timeline and credentials <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ===== FOUNDER ===== -->
+<section class="reveal" id="founder">
+  <div class="wrap">
+    <div class="section-label">Founder</div>
+    <h2 class="section-title">Built by someone who has carried the kit, shipped the hardware, and run the company.</h2>
+    <div class="founder-mini">
+      <div class="portrait">
+        <img src="founder.jpg" alt="Dr. Daniel Kurtenbach, Founder and CEO of Harrow Defense" data-fallback="founder-fb-home">
+        <div class="portrait-fallback" id="founder-fb-home" style="display:none"><div class="initials">DK</div><div class="cap">Founder and CEO</div></div>
+      </div>
+      <div>
+        <div class="founder-name">Dr. Daniel Kurtenbach</div>
+        <div class="founder-role">Founder and Chief Executive Officer</div>
+        <p class="body">Former U.S. Army Special Forces officer and White House Fellow. Hardware program leadership at Apple. Defense and intelligence AI/ML deployments at DataRobot. Chief Operating Officer of a defense electronics company shipping soldier-borne systems at scale. West Point, MIT Sloan, Harvard Kennedy School, Johns Hopkins.</p>
+        <div class="btn-row" style="margin-top:20px">
+          <a class="btn btn-ghost" href="company.html#founder">Full biography <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- ===== INVESTORS & PARTNERS ===== -->
+<section class="reveal" id="investors">
+  <div class="wrap">
+    <div class="section-label">Investors &amp; Partners</div>
+    <h2 class="section-title">Founder-funded to date. Prototype hardware in hand. Transition customer identified.</h2>
+    <p class="body">Harrow Defense has taken PYLON from concept to assembled Rev A hardware without outside capital or a government award. The intellectual property is founder-developed and company-owned, the cap table is clean, and the primary transition customer is the Army portfolio that owns Soldier Borne Mission Command. Deck, data sheet, and technical materials are available on request.</p>
+    <div class="contact-grid">
+      <div class="card">
+        <div class="card-title">Investors</div>
+        <p class="card-text">For the current deck, technical materials, and a conversation with the founder.</p>
+        <a class="contact-email" href="mailto:dan@harrowdefense.com?subject=Investor%20inquiry%20(Harrow%20Defense)">dan@harrowdefense.com</a>
+      </div>
+      <div class="card">
+        <div class="card-title">Government &amp; Industry</div>
+        <p class="card-text">Capability briefs, pilot programs, integration with soldier hubs and TAK products, and procurement across government and commercial markets. SDVOSB, SBIR-eligible, SAM.gov active, CAGE 1AQ41.</p>
+        <a class="contact-email" href="mailto:dan@harrowdefense.com?subject=PYLON%20inquiry%20(Harrow%20Defense)">dan@harrowdefense.com</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== FOOTER ===== -->
 <footer class="reveal">
-  <img src="logo-shield.jpg" alt="" class="footer-shield">
-  <p class="footer-text">Harrow Defense, LLC &middot; Alexandria, Virginia</p>
-  <p class="footer-text">&copy; 2026 Harrow Defense, LLC. All rights reserved.</p>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="logo-shield.png" alt="" class="footer-shield" width="34" height="41">
+        <p class="footer-text">Harrow Defense, LLC<br>Alexandria, Virginia<br>Service-Disabled Veteran-Owned Small Business<br>CAGE 1AQ41 &middot; UEI DA6ZTG2ENSH6 &middot; Patent pending</p>
+      </div>
+      <div>
+        <div class="footer-h">Site</div>
+        <ul class="footer-links">
+          <li><a href="pylon.html">PYLON</a></li>
+          <li><a href="company.html">Company</a></li>
+          <li><a href="company.html#founder">Founder</a></li>
+          <li><a href="company.html#milestones">Milestones</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:dan@harrowdefense.com">dan@harrowdefense.com</a></li>
+          <li><a href="#investors">Investor inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-text">&copy; 2026 Harrow Defense, LLC. All rights reserved.</p>
+      <p class="footer-text">Every soldier. Every sensor. Connected.</p>
+    </div>
+  </div>
 </footer>
 
-<script>
-// ========== CONSTELLATION MESH BACKGROUND ==========
-(function() {
-  const canvas = document.getElementById('mesh-bg');
-  const ctx = canvas.getContext('2d');
-  let w, h, nodes = [];
-  const NODE_COUNT = 45;
-  const CONNECT_DIST = 180;
-  const RED = [196, 30, 58];
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-
-  function initNodes() {
-    nodes = [];
-    for (let i = 0; i < NODE_COUNT; i++) {
-      nodes.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() * 1.5 + 0.5
-      });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-
-    for (const n of nodes) {
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < 0 || n.x > w) n.vx *= -1;
-      if (n.y < 0 || n.y > h) n.vy *= -1;
-    }
-
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < CONNECT_DIST) {
-          const alpha = (1 - dist / CONNECT_DIST) * 0.07;
-          ctx.strokeStyle = `rgba(${RED[0]},${RED[1]},${RED[2]},${alpha})`;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    for (const n of nodes) {
-      ctx.fillStyle = `rgba(${RED[0]},${RED[1]},${RED[2]},0.2)`;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', () => {
-    resize();
-    initNodes();
-  });
-
-  resize();
-  initNodes();
-  draw();
-})();
-
-// ========== SCROLL REVEAL ==========
-(function() {
-  const els = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12 });
-
-  els.forEach(el => observer.observe(el));
-})();
-</script>
-
+<script src="site.js"></script>
 </body>
 </html>
