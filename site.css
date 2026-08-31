@@ -124,8 +124,9 @@ h3 { font-size: 20px; letter-spacing: 1px; }
 .proof-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
 .proof-item { padding: 30px 22px; border-left: 1px solid var(--border-subtle); min-width: 0; }
 .proof-item:first-child { border-left: none; }
-.proof-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 38px; line-height: 1; color: var(--text-primary); letter-spacing: 1px; overflow-wrap: anywhere; }
-.proof-num .unit { font-size: 20px; color: var(--red-bright); margin-left: 4px; }
+.proof-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 34px; line-height: 1.1; color: var(--text-primary); letter-spacing: 1px; }
+.proof-num .unit { white-space: nowrap; display: inline-block; font-size: 19px; color: var(--red-bright); margin-left: 4px; }
+.proof-num .unit.stack { display: block; margin-left: 0; margin-top: 2px; letter-spacing: 3px; text-transform: uppercase; }
 .proof-cap { margin-top: 10px; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
 /* ========== CARDS ========== */
