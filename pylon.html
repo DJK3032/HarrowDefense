@@ -167,7 +167,7 @@
         </thead>
         <tbody>
           <tr><td>Form factor</td><td>MOLLE-mountable body-worn node with sealed enclosure</td><td class="target">Ruggedized overmold, same envelope</td></tr>
-          <tr><td>Weight</td><td>94 g with battery (design weight)</td><td class="target">85 g</td></tr>
+          <tr><td>Weight</td><td>128 g with battery, as weighed (printed prototype enclosure)</td><td class="target">85 g</td></tr>
           <tr><td>Environmental</td><td>Sealed enclosure selected for ingress protection</td><td class="target">MIL-STD-810H subset qualified: drop, ingress, thermal</td></tr>
           <tr><td>Power</td><td>Single-cell lithium-polymer battery, USB-C recharge; multi-day mesh-node design budget, under one watt peak</td><td class="target">Validated 96 hours or more at full capability, 144 hours or more in cache-and-forward</td></tr>
           <tr><td>Compute</td><td>Arm Cortex-M4F Bluetooth 5 SoC in a certified module with integrated PA/LNA</td><td class="target">Same</td></tr>
@@ -179,7 +179,7 @@
           <tr><td>Individual PLI</td><td>GNSS 1.5 m CEP nominal per chipset specification; IMU dead reckoning from the last fix through GNSS denial</td><td class="target">Dead-reckoning performance validated under denial scenarios</td></tr>
           <tr><td>Data output</td><td>Event-driven Cursor-on-Target on open standards; CivTAK native, ATAK-compatible; hands off to existing radios unchanged</td><td class="target">TAK Server integration; bandwidth-reduction target instrumented</td></tr>
           <tr><td>Security</td><td>Application-layer encryption</td><td class="target">Frame authentication; cybersecurity documentation package</td></tr>
-          <tr><td>Emission control</td><td>Sealed, glove-operable hardware kill: RF power gate at the rail; no software or remote command can reactivate the radios</td><td class="target">Four-mode selector: full operations, reduced signature, cache-and-forward, radio silent</td></tr>
+          <tr><td>Emission control</td><td>Sealed, glove-operable hardware kill: RF power gate at the rail; no software or remote command can reactivate the radios</td><td class="target">Four-position selector: open, squad, quiet, dark</td></tr>
           <tr><td>Cost</td><td>All-COTS bill of materials; unit pricing on request</td><td class="target">Held at production quantities</td></tr>
         </tbody>
       </table>
@@ -198,27 +198,27 @@
     <p class="body">PYLON is designed from the ground up for contested electromagnetic environments. The LoRa link runs at a small fraction of a tactical radio's transmit power, in short bursts at a low duty cycle. Chirp spread spectrum pushes power spectral density below narrowband detection thresholds, and the self-healing mesh keeps each hop short. When the situation calls for silence, the operator gets it in hardware.</p>
     <div class="grid-4">
       <div class="card">
-        <div class="card-kicker">Mode 1</div>
-        <div class="card-title">Full capability</div>
+        <div class="card-kicker">Open</div>
+        <div class="card-title">Full mesh</div>
         <p class="card-text">Bluetooth and LoRa mesh active. All sensors reporting. Training and permissive environments.</p>
       </div>
       <div class="card">
-        <div class="card-kicker">Mode 2</div>
-        <div class="card-title">Reduced signature</div>
+        <div class="card-kicker">Squad</div>
+        <div class="card-title">Bluetooth only</div>
         <p class="card-text">Bluetooth at minimum power. LoRa disabled at the hardware level, not in software. Contested environments.</p>
       </div>
       <div class="card">
-        <div class="card-kicker">Mode 3</div>
-        <div class="card-title">Cache and forward</div>
-        <p class="card-text">Bluetooth receive only. LoRa off. Sensor data logged to non-volatile memory and burst-transmitted when the situation permits.</p>
+        <div class="card-kicker">Quiet</div>
+        <div class="card-title">Minimum emissions</div>
+        <p class="card-text">Bluetooth at minimum power and a longer report interval. LoRa off. Unsent reports stored to flash and sent when the situation permits.</p>
       </div>
       <div class="card">
-        <div class="card-kicker">Mode 4</div>
+        <div class="card-kicker">Dark</div>
         <div class="card-title">Radio silent</div>
         <p class="card-text">All radios off through a hardware kill switch that physically opens the RF path. Zero emissions. No software or remote command can reactivate.</p>
       </div>
     </div>
-    <p class="small" style="margin-top:18px">As built today: sealed, glove-operable hardware kill at the rail. The four-mode selector is the funded design.</p>
+    <p class="small" style="margin-top:18px">As built today: sealed, glove-operable hardware kill at the rail, and Bluetooth-only operation. The four-position selector is the next board revision.</p>
   </div>
 </section>
 
@@ -264,7 +264,7 @@
     <h2 class="section-title">TRL 4. Rev A prototypes in hand and operating as a multi-node mesh. Rev B revision in design.</h2>
     <p class="body">All development to date has been company-funded ahead of any government dollar, and all intellectual property is founder-developed and company-owned.</p>
     <div class="rows">
-      <div class="row"><div class="row-label">Mesh and PLI validation</div><div class="row-desc">End-to-end chain demonstrated on development hardware: GNSS position into a four-node self-healing LoRa mesh into CivTAK as Cursor-on-Target, with per-operator icons on the tactical map.</div></div>
+      <div class="row"><div class="row-label">Mesh and PLI validation</div><div class="row-desc">End-to-end chain demonstrated on commercial development boards, ahead of custom hardware: GNSS position into a four-node self-healing LoRa mesh into CivTAK as Cursor-on-Target, with per-operator icons on the tactical map.</div></div>
       <div class="row"><div class="row-label">Circuit board</div><div class="row-desc">Custom Rev A board designed with a U.S. electrical-engineering partner: Bluetooth 5 SoC with integrated PA/LNA, dedicated LoRa transceiver, multi-constellation GNSS, six-axis IMU and environmental sensor, non-volatile flash. All-COTS bill of materials validated at multiple quantity tiers. Twelve assembled units delivered August 2026.</div></div>
       <div class="row"><div class="row-label">Firmware and interop</div><div class="row-desc">Custom Bluetooth beacon and selective gateway scanner firmware on development hardware; Cursor-on-Target generation validated against CivTAK. All twelve Rev A units pass self-test on the sensor, GNSS, and Bluetooth subsystems. September 2026: four Rev A units running as a Bluetooth mesh with relay, nodes on battery, plotted live in CivTAK; sealed hardware kill and Bluetooth-only reduced-signature mode bench-demonstrated.</div></div>
       <div class="row"><div class="row-label">Companion application</div><div class="row-desc">Android application framework for sensor onboarding and node configuration, built on the Nordic Bluetooth library.</div></div>
