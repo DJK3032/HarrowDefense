@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PYLON | Soldier-Worn Sensor Networking | Harrow Defense</title>
-<meta name="description" content="PYLON is a low-SWaP body-worn node that aggregates Bluetooth sensor data, processes and encrypts it at the edge, and bridges it to the tactical network over a low-probability-of-intercept LoRa mesh, delivering an individual position for every operator below the squad leader. Specifications, emission control modes, and development status.">
+<title>PYLON | Harrow Defense</title>
+<meta name="description" content="PYLON is a body-worn node beneath the radio: an individual position for every soldier, body-worn sensor data carried with it, native TAK output, and hardware emission control.">
 <link rel="canonical" href="https://harrowdefense.com/pylon.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Harrow Defense">
-<meta property="og:title" content="PYLON | Soldier-Worn Sensor Networking">
-<meta property="og:description" content="The last mile between soldier sensors and the tactical network. Specifications, emission control, and development status.">
+<meta property="og:title" content="PYLON | Harrow Defense">
+<meta property="og:description" content="PYLON is a body-worn node beneath the radio: an individual position for every soldier, body-worn sensor data carried with it, native TAK output, and hardware emission control.">
 <meta property="og:url" content="https://harrowdefense.com/pylon.html">
 <meta property="og:image" content="https://harrowdefense.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PYLON | Harrow Defense">
-<meta name="twitter:description" content="The last mile between soldier sensors and the tactical network.">
+<meta name="twitter:description" content="PYLON is a body-worn node beneath the radio: an individual position for every soldier, body-worn sensor data carried with it, native TAK output, and hardware emission control.">
 <meta name="twitter:image" content="https://harrowdefense.com/og-image.png">
 
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -29,26 +29,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "PYLON",
-  "brand": { "@type": "Brand", "name": "Harrow Defense" },
-  "manufacturer": { "@type": "Organization", "name": "Harrow Defense, LLC", "url": "https://harrowdefense.com/" },
-  "description": "Body-worn sensor-to-network bridge: aggregates Bluetooth sensor data, provides individual position, and relays over a low-probability-of-intercept LoRa mesh with native Cursor-on-Target output for TAK.",
-  "url": "https://harrowdefense.com/pylon.html",
-  "category": "Body-worn electronics"
-}
-</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b2b8822dc33a43f9b1ff91d34b1407ee"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
+<canvas id="mesh-bg" data-intensity="0.5"></canvas>
 
-<canvas id="mesh-bg" data-intensity="0.6"></canvas>
-
-<!-- ===== NAV ===== -->
 <header class="nav">
   <div class="nav-inner">
     <a class="nav-logo" href="index.html" aria-label="Harrow Defense home"><img src="logo-horizontal-600.png" alt="Harrow Defense"></a>
@@ -63,90 +48,37 @@
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
-<div class="hero">
+<main>
+<div class="hero hero-lean">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">PYLON <span class="pip">&#9670;</span> Patent pending <span class="pip">&#9670;</span> Rev A prototype</div>
-      <h1>The last mile between soldier sensors and the tactical network.</h1>
-      <p class="lead">PYLON is a low-SWaP body-worn node that aggregates body-worn Bluetooth sensor data, processes and encrypts it at the edge, and bridges it to the tactical network over a low-probability-of-intercept LoRa mesh, delivering an individual position for every operator below the squad leader. One end-user device per squad renders the full picture in TAK.</p>
-      <p class="lead">PYLON is an underlay, not a replacement. It complements program-of-record radios and leader end-user devices, and every inter-node link is an open standard.</p>
+      <h1>The node beneath the radio.</h1>
+      <p class="lead">PYLON is worn by every soldier, not just the leader. It carries their position and the readings from their wearables onto the network the unit already runs, and goes silent when they need it to.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="#specs">Specifications <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
-        <a class="btn btn-ghost" href="mailto:dan@harrowdefense.com?subject=PYLON%20data%20sheet%20request">Request the data sheet</a>
+        <a class="btn btn-primary" href="mailto:dan@harrowdefense.com?subject=PYLON%20technical%20brief%20request">Request the technical brief</a>
       </div>
+      <p class="small" style="margin-top:22px">Patent pending</p>
     </div>
-    <div class="hero-visual">
-      <div class="product-visual">
-        <img src="pylon-enclosure-render.png" alt="PYLON Rev A enclosure, engineering render" width="890" height="794">
-        <p class="product-caption">Engineering render of the Rev A enclosure.</p>
-      </div>
+    <div class="render">
+      <img src="pylon-enclosure-render.png" alt="Engineering render of the PYLON enclosure" width="890" height="794">
     </div>
   </div>
 </div>
 
-<!-- ===== HOW IT WORKS ===== -->
-<section class="reveal" id="how">
+<section class="reveal">
   <div class="wrap">
-    <div class="section-label">How It Works</div>
-    <h2 class="section-title">PYLON owns the critical first hops: ingest, process, encrypt, compress.</h2>
-    <p class="body">Data arrives at the tactical network ready to transport, not as a raw dump. Everything downstream of PYLON is infrastructure the customer already owns.</p>
-
-    <div class="diagram" role="img" aria-label="Data flow: body-worn sensors to PYLON ingest, PYLON bridge over the mesh, existing tactical radios, then edge and enterprise systems.">
-      <svg viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3a4860"/></marker>
-          <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C41E3A"/></marker>
-        </defs>
-        <text x="242" y="62" class="n-hop" text-anchor="middle">HOP 1 · BLE</text>
-        <text x="487" y="62" class="n-hop" text-anchor="middle">HOP 2 · LORA MESH</text>
-        <text x="732" y="62" class="n-hop dim" text-anchor="middle">HOP 3 · EXISTING RADIOS</text>
-        <text x="977" y="62" class="n-hop dim" text-anchor="middle">HOPS 4 AND 5 · CLOUD</text>
-        <path d="M220 145 L263 145" class="arrow hot" marker-end="url(#ahr)"/>
-        <path d="M465 145 L508 145" class="arrow hot" marker-end="url(#ahr)"/>
-        <path d="M710 145 L753 145" class="arrow" marker-end="url(#ah)"/>
-        <path d="M955 145 L998 145" class="arrow" marker-end="url(#ah)"/>
-        <rect x="20" y="80" width="200" height="130" rx="4" class="n-box"/>
-        <text x="120" y="112" class="n-title" text-anchor="middle">SENSORS</text>
-        <text x="120" y="140" class="n-sub" text-anchor="middle">Bluetooth wearables on the</text>
-        <text x="120" y="159" class="n-sub" text-anchor="middle">soldier: physio, weapon status,</text>
-        <text x="120" y="178" class="n-sub" text-anchor="middle">ammunition, counter-UAS, CBRN</text>
-        <rect x="265" y="80" width="200" height="130" rx="4" class="n-box hot"/>
-        <text x="365" y="112" class="n-title" text-anchor="middle">PYLON · INGEST</text>
-        <text x="365" y="140" class="n-sub" text-anchor="middle">Aggregate sensor streams and</text>
-        <text x="365" y="159" class="n-sub" text-anchor="middle">GNSS/IMU position; process</text>
-        <text x="365" y="178" class="n-sub" text-anchor="middle">and compress at the edge</text>
-        <rect x="510" y="80" width="200" height="130" rx="4" class="n-box hot"/>
-        <text x="610" y="112" class="n-title" text-anchor="middle">PYLON · BRIDGE</text>
-        <text x="610" y="140" class="n-sub" text-anchor="middle">Encrypt, format as Cursor-on-</text>
-        <text x="610" y="159" class="n-sub" text-anchor="middle">Target, relay soldier to soldier</text>
-        <text x="610" y="178" class="n-sub" text-anchor="middle">over the LPI/LPD mesh</text>
-        <rect x="755" y="80" width="200" height="130" rx="4" class="n-box"/>
-        <text x="855" y="112" class="n-title" text-anchor="middle">TACTICAL NETWORK</text>
-        <text x="855" y="140" class="n-sub" text-anchor="middle">Existing radios carry</text>
-        <text x="855" y="159" class="n-sub" text-anchor="middle">pre-compressed CoT from</text>
-        <text x="855" y="178" class="n-sub" text-anchor="middle">squad to battalion</text>
-        <rect x="1000" y="80" width="200" height="130" rx="4" class="n-box"/>
-        <text x="1100" y="112" class="n-title" text-anchor="middle">EDGE AND ENTERPRISE</text>
-        <text x="1100" y="140" class="n-sub" text-anchor="middle">TAK Server, tactical edge cloud,</text>
-        <text x="1100" y="159" class="n-sub" text-anchor="middle">cross-domain transfer, and</text>
-        <text x="1100" y="178" class="n-sub" text-anchor="middle">formation-wide analytics</text>
-        <text x="600" y="246" class="n-note" text-anchor="middle">Red: PYLON. Grey: infrastructure the customer already owns. Every inter-node link is an open standard.</text>
-      </svg>
-    </div>
-
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-title">Secure BLE-to-TAK gateway</div>
-        <p class="card-text">Aggregates body-worn Bluetooth sensors, encrypts at the application layer, and formats output as Cursor-on-Target for native ATAK ingest. No gateway server, no custom integration.</p>
+    <div class="trio">
+      <div>
+        <h3>Every soldier on the map</h3>
+        <p>An individual position for each soldier, sent as Cursor on Target so it lands in TAK with no gateway server and no custom integration.</p>
       </div>
-      <div class="card">
-        <div class="card-title">Edge processing and compression</div>
-        <p class="card-text">On-device processing filters, prioritizes, and compresses raw sensor streams before the first network hop. The mesh carries events, not raw streams. Design target: at least 90 percent bandwidth reduction.</p>
+      <div>
+        <h3>Sensors ride along</h3>
+        <p>PYLON pairs with the Bluetooth wearables already on the soldier and carries their readings with position, processed at the edge so the network carries events, not raw streams.</p>
       </div>
-      <div class="card">
-        <div class="card-title">Individual position for every soldier</div>
-        <p class="card-text">Multi-constellation GNSS with IMU dead reckoning from the last fix through GNSS denial. Enables fires deconfliction, casualty evacuation, fratricide prevention, and UAS deconfliction below the squad leader.</p>
+      <div>
+        <h3>Quiet on command</h3>
+        <p>Emission control is enforced in hardware, not set in software. A sealed, glove-operable switch takes the node off the air, and nothing remote can turn it back on.</p>
       </div>
     </div>
   </div>
@@ -154,144 +86,32 @@
 
 <div class="divider"><div class="divider-line"></div></div>
 
-<!-- ===== SPECIFICATIONS ===== -->
-<section class="reveal" id="specs">
+<section class="reveal">
   <div class="wrap">
-    <div class="section-label">Specifications</div>
-    <h2 class="section-title">Current design and production target, stated separately.</h2>
-    <p class="body">The left column is what exists on the bench today at Technology Readiness Level 4. The right column is the funded-effort target. We keep the two apart on purpose.</p>
-    <div class="table-wrap">
-      <table class="spec">
-        <thead>
-          <tr><th>Parameter</th><th>Current design (TRL 4)</th><th>Production target (funded effort)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Form factor</td><td>MOLLE-mountable body-worn node with sealed enclosure</td><td class="target">Ruggedized overmold, same envelope</td></tr>
-          <tr><td>Weight</td><td>128 g with battery, as weighed (printed prototype enclosure)</td><td class="target">85 g</td></tr>
-          <tr><td>Environmental</td><td>Sealed enclosure selected for ingress protection</td><td class="target">MIL-STD-810H subset qualified: drop, ingress, thermal</td></tr>
-          <tr><td>Power</td><td>Single-cell lithium-polymer battery, USB-C recharge; multi-day mesh-node design budget, under one watt peak</td><td class="target">Validated 96 hours or more at full capability, 144 hours or more in cache-and-forward</td></tr>
-          <tr><td>Compute</td><td>Arm Cortex-M4F Bluetooth 5 SoC in a certified module with integrated PA/LNA</td><td class="target">Same</td></tr>
-          <tr><td>Mesh radio</td><td>Sub-GHz LoRa transceiver, chirp spread spectrum, 902-928 MHz ISM band</td><td class="target">Firmware-driven channel hopping across the configured sub-GHz plan</td></tr>
-          <tr><td>Transmit behavior</td><td>Short, infrequent bursts at a low duty cycle</td><td class="target">Duty-cycled per emission-control mode</td></tr>
-          <tr><td>RF signature</td><td>Low transmit power and spread-spectrum modulation, designed to sit below narrowband detection thresholds</td><td class="target">Detectability characterization in government experimentation</td></tr>
-          <tr><td>Onboard sensors</td><td>Six-axis IMU, multi-constellation GNSS, environmental (temperature, humidity, pressure)</td><td class="target">Same</td></tr>
-          <tr><td>Sensor aggregation</td><td>Bluetooth 5 body-worn sensors: physiological, environmental, mission</td><td class="target">Expanded peripheral profiles</td></tr>
-          <tr><td>Individual PLI</td><td>GNSS 1.5 m CEP nominal per chipset specification; IMU dead reckoning from the last fix through GNSS denial</td><td class="target">Dead-reckoning performance validated under denial scenarios</td></tr>
-          <tr><td>Data output</td><td>Event-driven Cursor-on-Target on open standards; CivTAK native, ATAK-compatible; hands off to existing radios unchanged</td><td class="target">TAK Server integration; bandwidth-reduction target instrumented</td></tr>
-          <tr><td>Security</td><td>Application-layer encryption</td><td class="target">Frame authentication; cybersecurity documentation package</td></tr>
-          <tr><td>Emission control</td><td>Sealed, glove-operable hardware kill: RF power gate at the rail; no software or remote command can reactivate the radios</td><td class="target">Four-position selector: open, squad, quiet, dark</td></tr>
-          <tr><td>Cost</td><td>All-COTS bill of materials; unit pricing on request</td><td class="target">Held at production quantities</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="small" style="margin-top:14px">Specifications describe the Rev A design under bring-up and are subject to change through qualification. Full data sheet available on request.</p>
-  </div>
-</section>
-
-<div class="divider"><div class="divider-line"></div></div>
-
-<!-- ===== EMCON ===== -->
-<section class="reveal" id="emcon">
-  <div class="wrap">
-    <div class="section-label">Signature and Emission Control</div>
-    <h2 class="section-title">&ldquo;If every soldier is transmitting, aren&rsquo;t you painting the formation?&rdquo;</h2>
-    <p class="body">PYLON is designed from the ground up for contested electromagnetic environments. The LoRa link runs at a small fraction of a tactical radio's transmit power, in short bursts at a low duty cycle. Chirp spread spectrum pushes power spectral density below narrowband detection thresholds, and the self-healing mesh keeps each hop short. When the situation calls for silence, the operator gets it in hardware.</p>
-    <div class="grid-4">
-      <div class="card">
-        <div class="card-kicker">Open</div>
-        <div class="card-title">Full mesh</div>
-        <p class="card-text">Bluetooth and LoRa mesh active. All sensors reporting. Training and permissive environments.</p>
-      </div>
-      <div class="card">
-        <div class="card-kicker">Squad</div>
-        <div class="card-title">Bluetooth only</div>
-        <p class="card-text">Bluetooth at minimum power. LoRa disabled at the hardware level, not in software. Contested environments.</p>
-      </div>
-      <div class="card">
-        <div class="card-kicker">Quiet</div>
-        <div class="card-title">Minimum emissions</div>
-        <p class="card-text">Bluetooth at minimum power and a longer report interval. LoRa off. Unsent reports stored to flash and sent when the situation permits.</p>
-      </div>
-      <div class="card">
-        <div class="card-kicker">Dark</div>
-        <div class="card-title">Radio silent</div>
-        <p class="card-text">All radios off through a hardware kill switch that physically opens the RF path. Zero emissions. No software or remote command can reactivate.</p>
-      </div>
-    </div>
-    <p class="small" style="margin-top:18px">As built today: sealed, glove-operable hardware kill at the rail, and Bluetooth-only operation. The four-position selector is the next board revision.</p>
-  </div>
-</section>
-
-<div class="divider"><div class="divider-line"></div></div>
-
-<!-- ===== WHERE IT FITS ===== -->
-<section class="reveal" id="fit">
-  <div class="wrap">
-    <div class="section-label">Where PYLON Fits</div>
-    <h2 class="section-title">A sensor-to-network bridge, not a tactical radio.</h2>
-    <p class="body">Tactical radios, soldier hubs, and end-user devices each do one job well and each stop at the leader. PYLON sits underneath all of them and extends the network to the soldiers who carry none of them. It hands existing radios pre-compressed Cursor-on-Target, it gives soldier hubs a peripheral their architecture already expects, and it gives the leader's end-user device a picture of the whole squad instead of a picture of the leader.</p>
-    <div class="isnot">
-      <div class="card">
-        <div class="card-title">PYLON is</div>
-        <ul class="yes">
-          <li>The aggregation tier beneath the radio, the hub, and the display</li>
-          <li>An individual position and sensor bridge for every soldier, priced per soldier rather than per leader</li>
-          <li>Native Cursor-on-Target output into ATAK, CivTAK, and TAK Server</li>
-          <li>Hardware-enforced emission control with data preserved through radio silence</li>
-          <li>Open standards on every inter-node link, vendor-neutral toward the radio and the hub</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">PYLON is not</div>
-        <ul class="no">
-          <li>A tactical radio, and it does not replace one</li>
-          <li>A soldier computer, a display, or a battle management application</li>
-          <li>A voice system</li>
-          <li>A replacement for the leader's end-user device</li>
-          <li>Dependent on a vehicle, a tower, a satellite, or a server to form its network</li>
-        </ul>
-      </div>
+    <div class="statement">
+      <h2>It rides what the unit already carries.</h2>
+      <p>PYLON is not a radio, a soldier computer or a display. It sits underneath them, works alongside fielded radios and end-user devices, and uses open standards on every link. That keeps it small, keeps it affordable enough to issue to everyone, and keeps it out of the way.</p>
     </div>
   </div>
 </section>
 
 <div class="divider"><div class="divider-line"></div></div>
 
-<!-- ===== STATUS ===== -->
-<section class="reveal" id="status">
+<section class="reveal">
   <div class="wrap">
-    <div class="section-label">Development Status</div>
-    <h2 class="section-title">TRL 4. Rev A prototypes in hand and operating as a multi-node mesh. Rev B revision in design.</h2>
-    <p class="body">All development to date has been company-funded ahead of any government dollar, and all intellectual property is founder-developed and company-owned.</p>
-    <div class="rows">
-      <div class="row"><div class="row-label">Mesh and PLI validation</div><div class="row-desc">End-to-end chain demonstrated on commercial development boards, ahead of custom hardware: GNSS position into a four-node self-healing LoRa mesh into CivTAK as Cursor-on-Target, with per-operator icons on the tactical map.</div></div>
-      <div class="row"><div class="row-label">Circuit board</div><div class="row-desc">Custom Rev A board designed with a U.S. electrical-engineering partner: Bluetooth 5 SoC with integrated PA/LNA, dedicated LoRa transceiver, multi-constellation GNSS, six-axis IMU and environmental sensor, non-volatile flash. All-COTS bill of materials validated at multiple quantity tiers. Twelve assembled units delivered August 2026.</div></div>
-      <div class="row"><div class="row-label">Firmware and interop</div><div class="row-desc">Custom Bluetooth beacon and selective gateway scanner firmware on development hardware; Cursor-on-Target generation validated against CivTAK. All twelve Rev A units pass self-test on the sensor, GNSS, and Bluetooth subsystems. September 2026: four Rev A units running as a Bluetooth mesh with relay, nodes on battery, plotted live in CivTAK; sealed hardware kill and Bluetooth-only reduced-signature mode bench-demonstrated.</div></div>
-      <div class="row"><div class="row-label">Companion application</div><div class="row-desc">Android application framework for sensor onboarding and node configuration, built on the Nordic Bluetooth library.</div></div>
-      <div class="row"><div class="row-label">Enclosure and SWaP</div><div class="row-desc">Three MIL-STD-810H enclosure options analyzed (aluminum, glass-filled nylon, polycarbonate with TPU overmold); overmold selected for production. Additively manufactured nylon enclosures for the Rev A prototypes in production.</div></div>
-      <div class="row"><div class="row-label">Intellectual property</div><div class="row-desc">U.S. patent applications pending on the core architecture, including emission control and the mesh waveform. All IP founder-developed and company-owned.</div></div>
-      <div class="row"><div class="row-label">Next</div><div class="row-desc">Rev B board revision (antenna and RF front end); company-funded squad-scale validation, Q4 2026; TRL 4 to TRL 6 with government funding through a nine-month maturation aligned to sponsor experimentation.</div></div>
+    <div class="statement">
+      <h2>The detail is in the brief.</h2>
+      <p>Specifications, architecture, signature data and test results are shared directly with government customers, partners and investors.</p>
     </div>
-  </div>
-</section>
-
-<div class="divider"><div class="divider-line"></div></div>
-
-<!-- ===== BEYOND DEFENSE ===== -->
-<section class="reveal" id="beyond">
-  <div class="wrap">
-    <div class="section-label">Beyond Defense</div>
-    <h2 class="section-title">The same node serves every operator who works where the network fails.</h2>
-    <p class="body">Law enforcement tactical teams in transit tunnels, wildland hand crews beyond repeater coverage, incident commanders at a mass-casualty scene, underground mine supervisors, and expedition crews far from any tower all need the same three things: where their people are, what condition they are in, and a way to stay connected without infrastructure. PYLON's hardware, firmware, and open output format are designed to serve each of them.</p>
     <div class="btn-row">
-      <a class="btn btn-ghost" href="index.html#operators">Operating environments <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-primary" href="mailto:dan@harrowdefense.com?subject=PYLON%20inquiry%20(Harrow%20Defense)">Talk to us</a>
+      <a class="btn btn-primary" href="mailto:dan@harrowdefense.com?subject=PYLON%20technical%20brief%20request">Request the technical brief</a>
+      <a class="btn btn-ghost" href="index.html#investors">Talk to us</a>
     </div>
   </div>
 </section>
+</main>
 
-<!-- ===== FOOTER ===== -->
-<footer class="reveal">
+<footer>
   <div class="wrap">
     <div class="footer-grid">
       <div>
@@ -302,9 +122,9 @@
         <div class="footer-h">Site</div>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
+          <li><a href="pylon.html">PYLON</a></li>
           <li><a href="company.html">Company</a></li>
-          <li><a href="company.html#founder">Founder</a></li>
-          <li><a href="company.html#milestones">Milestones</a></li>
+          <li><a href="news.html">News</a></li>
         </ul>
       </div>
       <div>
