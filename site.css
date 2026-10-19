@@ -410,3 +410,5 @@ section { padding: 76px 0; }
   .closer-band { padding: 64px 0 72px; }
 }
 @media (max-width: 640px) { .founder-mini { grid-template-columns: 1fr; gap: 18px; } .founder-mini .portrait { max-width: 140px; } }
+.band-img.photo img { max-width: 440px; border-radius: 6px; filter: none; box-shadow: 0 30px 70px rgba(0,0,0,.55); border: 1px solid var(--border); }
+@media (max-width: 980px) { .band-img.photo img { max-width: 360px; } }
