@@ -84,38 +84,51 @@
         <a class="btn btn-ghost" href="#investors">Talk to us</a>
       </div>
     </div>
-    <div class="squad">
-      <svg viewBox="0 0 480 480" role="img" aria-label="A squad of soldiers, each a node on the network, linked to one another and to their leader">
-<g class="grid" aria-hidden="true"><line x1="0" y1="0" x2="0" y2="480"/><line x1="48" y1="0" x2="48" y2="480"/><line x1="96" y1="0" x2="96" y2="480"/><line x1="144" y1="0" x2="144" y2="480"/><line x1="192" y1="0" x2="192" y2="480"/><line x1="240" y1="0" x2="240" y2="480"/><line x1="288" y1="0" x2="288" y2="480"/><line x1="336" y1="0" x2="336" y2="480"/><line x1="384" y1="0" x2="384" y2="480"/><line x1="432" y1="0" x2="432" y2="480"/><line x1="480" y1="0" x2="480" y2="480"/><line x1="0" y1="0" x2="480" y2="0"/><line x1="0" y1="48" x2="480" y2="48"/><line x1="0" y1="96" x2="480" y2="96"/><line x1="0" y1="144" x2="480" y2="144"/><line x1="0" y1="192" x2="480" y2="192"/><line x1="0" y1="240" x2="480" y2="240"/><line x1="0" y1="288" x2="480" y2="288"/><line x1="0" y1="336" x2="480" y2="336"/><line x1="0" y1="384" x2="480" y2="384"/><line x1="0" y1="432" x2="480" y2="432"/><line x1="0" y1="480" x2="480" y2="480"/></g>
-<g aria-hidden="true"><ellipse class="contour" cx="250" cy="250" rx="210" ry="150" transform="rotate(-12 250 250)"/><ellipse class="contour" cx="250" cy="250" rx="160" ry="108" transform="rotate(-12 250 250)"/><ellipse class="contour" cx="262" cy="244" rx="110" ry="70" transform="rotate(-12 262 244)"/><ellipse class="contour" cx="270" cy="240" rx="58" ry="34" transform="rotate(-12 270 240)"/></g>
-<g aria-hidden="true">
-<line class="link" x1="240" y1="232" x2="152" y2="168" style="--d:0.45s"/>
-<line class="link" x1="240" y1="232" x2="328" y2="168" style="--d:0.70s"/>
-<line class="link" x1="240" y1="232" x2="178" y2="300" style="--d:0.95s"/>
-<line class="link" x1="240" y1="232" x2="302" y2="300" style="--d:1.20s"/>
-<line class="link" x1="152" y1="168" x2="98" y2="244" style="--d:1.60s"/>
-<line class="link" x1="98" y1="244" x2="178" y2="300" style="--d:1.60s"/>
-<line class="link" x1="98" y1="244" x2="96" y2="338" style="--d:2.05s"/>
-<line class="link" x1="328" y1="168" x2="382" y2="244" style="--d:1.80s"/>
-<line class="link" x1="382" y1="244" x2="302" y2="300" style="--d:1.80s"/>
-<line class="link" x1="382" y1="244" x2="384" y2="338" style="--d:2.25s"/>
-<line class="link" x1="178" y1="300" x2="302" y2="300" style="--d:1.20s"/>
-<line class="link" x1="178" y1="300" x2="96" y2="338" style="--d:2.05s"/>
-<line class="link" x1="302" y1="300" x2="384" y2="338" style="--d:2.25s"/>
-</g><g aria-hidden="true">
-<circle class="halo" cx="240" cy="232" r="9"/>
-<circle class="node lead-node" cx="240" cy="232" r="9"/>
-<circle class="node" cx="152" cy="168" r="6.5" style="--d:0.70s"/>
-<circle class="node" cx="328" cy="168" r="6.5" style="--d:0.95s"/>
-<circle class="node" cx="178" cy="300" r="6.5" style="--d:1.20s"/>
-<circle class="node" cx="302" cy="300" r="6.5" style="--d:1.45s"/>
-<circle class="node" cx="98" cy="244" r="6.5" style="--d:1.85s"/>
-<circle class="node" cx="382" cy="244" r="6.5" style="--d:2.05s"/>
-<circle class="node" cx="96" cy="338" r="6.5" style="--d:2.30s"/>
-<circle class="node" cx="384" cy="338" r="6.5" style="--d:2.50s"/>
-</g></svg>
-
-    </div>
+    <div class="shield-mesh" id="shieldMesh">
+        <svg viewBox="0 0 480 520" role="img" aria-label="Harrow Defense shield drawn as a live mesh network">
+          <defs>
+            <radialGradient id="sm-fill" cx="50%" cy="42%" r="65%">
+              <stop offset="0%" stop-color="#1c0b12"/>
+              <stop offset="70%" stop-color="#0b0a10"/>
+              <stop offset="100%" stop-color="#07080d"/>
+            </radialGradient>
+            <radialGradient id="sm-h" gradientUnits="userSpaceOnUse" cx="240" cy="236" r="170">
+              <stop offset="0%" stop-color="#ff8f7f"/>
+              <stop offset="45%" stop-color="#ff5a55"/>
+              <stop offset="100%" stop-color="#f0333f"/>
+            </radialGradient>
+            <filter id="sm-h-bloom" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="14"/>
+            </filter>
+            <filter id="sm-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="9" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="sm-glow-small" x="-200%" y="-200%" width="500%" height="500%">
+              <feGaussianBlur stdDeviation="2.2" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="sm-rim-glow" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <clipPath id="sm-clip"><path id="sm-clip-path"/></clipPath>
+          </defs>
+          <path id="sm-body" fill="url(#sm-fill)"/>
+          <g class="field" clip-path="url(#sm-clip)">
+            <g id="sm-edges"></g>
+            <g id="sm-halos"></g>
+            <g id="sm-nodes"></g>
+            <g id="sm-packets"></g>
+          </g>
+          <path id="sm-rim-inner" class="rim-inner"/>
+          <path id="sm-rim" class="rim" filter="url(#sm-rim-glow)"/>
+          <g class="h-mark">
+            <path id="sm-h-glow" class="h-glow" fill="#ff3b45" opacity=".7" filter="url(#sm-h-bloom)"/>
+            <path id="sm-h-face" fill="url(#sm-h)" stroke="#ffb3a8" stroke-width="1.2" stroke-opacity=".45" stroke-linejoin="miter" filter="url(#sm-glow-small)"/>
+          </g>
+        </svg>
+      </div>
   </div>
 </div>
 
@@ -237,5 +250,6 @@
 </footer>
 
 <script src="site.js"></script>
+<script src="shield-mesh.js"></script>
 </body>
 </html>
