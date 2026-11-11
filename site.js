@@ -68,3 +68,15 @@
     img.addEventListener('error', showFallback);
   });
 })();
+
+/* Visit log: one small report per page view; never blocks or breaks the page */
+(function () {
+  try {
+    var h = location.hostname;
+    if (h !== 'harrowdefense.com' && h !== 'www.harrowdefense.com') return;
+    var data = JSON.stringify({ p: location.pathname + location.search, r: document.referrer || '' });
+    var url = 'https://harrow-visit-log.harrowdefense.workers.dev/v';
+    if (navigator.sendBeacon) { navigator.sendBeacon(url, new Blob([data], { type: 'text/plain' })); }
+    else { fetch(url, { method: 'POST', body: data, keepalive: true, mode: 'cors' }).catch(function () {}); }
+  } catch (e) {}
+})();
